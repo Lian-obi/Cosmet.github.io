@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клиника косметологии "Эстетик" - профессиональный уход за кожей</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #9c27b0;
+            --secondary-color: #7b1fa2;
+            --accent-color: #e91e63;
+            --light-color: #f8f9fa;
+            --dark-color: #212121;
+            --gray-color: #757575;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: #ffeb3b;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ffeb3b;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #c2185b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Services */
+        .services {
+            padding: 5rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .service-content p {
+            color: var(--gray-color);
+            margin-bottom: 1rem;
+        }
+        
+        .service-price {
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+        
+        /* About */
+        .about {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: var(--gray-color);
+        }
+        
+        .about-features {
+            margin-top: 2rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-icon {
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .feature-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Doctors */
+        .doctors {
+            padding: 5rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .doctor-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .doctor-img {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .doctor-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .doctor-info {
+            padding: 1.5rem;
+        }
+        
+        .doctor-info h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .doctor-info p.specialty {
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .doctor-info p.experience {
+            color: var(--gray-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--primary-color);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 1px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .testimonial-item {
+            padding: 2rem;
+        }
+        
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--dark-color);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .testimonial-text::before {
+            top: -20px;
+            left: -10px;
+        }
+        
+        .testimonial-text::after {
+            bottom: -40px;
+            right: -10px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+        
+        .author-info p {
+            color: var(--gray-color);
+        }
+        
+        /* CTA */
+        .cta {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .btn-light {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        
+        .btn-light:hover {
+            background-color: #f1f1f1;
+            color: var(--secondary-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-col p {
+            margin-bottom: 1rem;
+            color: #bdbdbd;
+        }
+        
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #bdbdbd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .footer-hours p {
+            display: flex;
+            justify-content: space-between;
+            max-width: 250px;
+        }
+        
+        .footer-hours span {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bdbdbd;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary-color);
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+                padding: 0.5rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-spa"></i>
+                <span>Эстетик</span>
+            </div>
+            <nav>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul id="navMenu">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#about">О клинике</a></li>
+                    <li><a href="#doctors">Врачи</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Профессиональный уход за вашей кожей</h1>
+            <p>Современные косметологические процедуры от ведущих специалистов с медицинским образованием. Вернем молодость, красоту и уверенность в себе!</p>
+            <a href="#booking" class="btn">Записаться на прием</a>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши услуги</h2>
+                <p>Мы предлагаем широкий спектр косметологических услуг для лица и тела с использованием современного оборудования и качественных препаратов</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Чистка лица">
+                    </div>
+                    <div class="service-content">
+                        <h3>Чистка лица</h3>
+                        <p>Комплексная профессиональная чистка лица с индивидуальным подбором уходовых средств</p>
+                        <div class="service-price">от 4 500 руб.</div>
+                        <a href="#" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ботокс">
+                    </div>
+                    <div class="service-content">
+                        <h3>Ботокс</h3>
+                        <p>Безболезненная инъекция ботулотоксина для коррекции мимических морщин и омоложения кожи</p>
+                        <div class="service-price">от 15 000 руб.</div>
+                        <a href="#" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://static.tildacdn.com/tild3063-3530-4365-a365-353862353663/5326476efe793615e2d5.jpg" alt="Биоревитализация">
+                    </div>
+                    <div class="service-content">
+                        <h3>Биоревитализация</h3>
+                        <p>Инъекции гиалуроновой кислоты для интенсивного увлажнения и омоложения кожи</p>
+                        <div class="service-price">от 12 000 руб.</div>
+                        <a href="#" class="btn">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://www.spa-kluchi.ru/upload/medialibrary/98d/98dccc0a47b996af0c0647826fc56061.jpg" alt="Консультация с космитологом">
+                    </div>
+                    <div class="service-content">
+                        <h3>Консультация с космитологом</h3>
+                        <p>Персональные решения по вашим вопросам</p>
+                        <div class="service-price">2000 руб.</div>
+                        <a href="#" class="btn">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://eklinika.telegraf.rs/wp-content/uploads/2020/10/05/epilacija-shutterstock_1812606901.jpg" alt="Лазерная эпиляция">
+                    </div>
+                    <div class="service-content">
+                        <h3>Лазерная эпиляция</h3>
+                        <p>Высокотехнологичное удаление волос с любого места безболезненное, безопасное и с долговременным эффектом</p>
+                        <div class="service-price">от 3500 руб.</div>
+                        <a href="#" class="btn">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container about-container">
+            <div class="about-img">
+                <img src="https://avatars.mds.yandex.net/i?id=38bc81125fdea32f144828368ecb83b8_l-4589723-images-thumbs&n=13" alt="Наша клиника">
+            </div>
+            <div class="about-content">
+                <h2>О нашей клинике</h2>
+                <p>Клиника эстетической медицины "Эстетик" - это современный центр косметологии, где работают высококвалифицированные специалисты с медицинским образованием.</p>
+                <p>Мы используем только проверенные методики и сертифицированные препараты от ведущих мировых производителей.</p>
+                
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Сертифицированные специалисты</h4>
+                            <p>Все наши врачи имеют высшее медицинское образование и регулярно повышают квалификацию</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Безопасность</h4>
+                            <p>Строгое соблюдение санитарных норм и использование одноразовых расходных материалов</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Индивидуальный подход</h4>
+                            <p>Для каждого пациента разрабатывается персональная программа процедур</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors -->
+    <section class="doctors" id="doctors">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши специалисты</h2>
+                <p>Опытные врачи-косметологи с медицинским образованием и многолетней практикой</p>
+            </div>
+            
+            <div class="doctors-grid">
+                <div class="doctor-card">
+                    <div class="doctor-img">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Иванова Анна Сергеевна">
+                    </div>
+                    <div class="doctor-info">
+                        <h3>Иванова Анна Сергеевна</h3>
+                        <p class="specialty">Врач-косметолог, дерматовенеролог</p>
+                        <p class="experience">Опыт работы: 12 лет</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <div class="doctor-img">
+                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Петрова Елена Викторовна">
+                    </div>
+                    <div class="doctor-info">
+                        <h3>Петрова Елена Викторовна</h3>
+                        <p class="specialty">Врач-косметолог, трихолог</p>
+                        <p class="experience">Опыт работы: 8 лет</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <div class="doctor-img">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Сидорова Ольга Александровна">
+                    </div>
+                    <div class="doctor-info">
+                        <h3>Сидоров Олег Александрович</h3>
+                        <p class="specialty">Врач-косметолог, лазерный терапевт</p>
+                        <p class="experience">Опыт работы: 10 лет</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-telegram-plane"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>Отзывы наших клиентов</h2>
+                <p>Что говорят о нас люди, которые уже воспользовались нашими услугами</p>
+            </div>
+            
+            <div class="testimonials-slider">
+                <div class="testimonial-item">
+                    <div class="testimonial-text">
+                        Очень довольна результатом после курса биоревитализации! Кожа стала увлажненной, свежей, мелкие морщинки разгладились. Спасибо Анне Сергеевне за профессиональный подход и внимательное отношение.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Марина">
+                        </div>
+                        <div class="author-info">
+                            <h4>Марина, 34 года</h4>
+                            <p>Курс биоревитализации</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="booking">
+        <div class="container">
+            <h2>Запишитесь на консультацию прямо сейчас</h2>
+            <p>Оставьте заявку и наш администратор свяжется с вами для уточнения деталей и записи на удобное время</p>
+            <a href="zap.html" class="btn btn-light">Записаться онлайн</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacts">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col footer-about">
+                    <h3>О клинике</h3>
+                    <p>Клиника эстетической медицины "Эстетик" - это современный центр косметологии с опытными специалистами и новейшим оборудованием.</p>
+                </div>
+                
+                <div class="footer-col footer-contact">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> г. Ижевск, ул. Удмуртская, д. 25</p>
+                    <p><i class="fas fa-phone-alt"></i> +7 (495) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@estetik-clinic.ru</p>
+                </div>
+                
+                <div class="footer-col footer-links">
+                    <h3>Быстрые ссылки</h3>
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#about">О клинике</a></li>
+                        <li><a href="#doctors">Врачи</a></li>
+                        <li><a href="#reviews">Отзывы</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col footer-hours">
+                    <h3>Часы работы</h3>
+                    <p><span>Пн-Пт:</span> 9:00 - 21:00</p>
+                    <p><span>Сб:</span> 10:00 - 18:00</p>
+                    <p><span>Вс:</span> 10:00 - 15:00</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Клиника косметологии "Эстетик". Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    navMenu.classList.remove('show');
+                }
+            });
+        });
+        
+        // Sticky header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>

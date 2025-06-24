@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запись на приём к косметологу</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #8e44ad;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        
+        .clinic-info {
+            display: flex;
+            margin-bottom: 30px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .clinic-photo {
+            width: 40%;
+            background: url('https://via.placeholder.com/400x300') center/cover;
+        }
+        
+        .clinic-details {
+            width: 60%;
+            padding: 20px;
+        }
+        
+        .doctor-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+        }
+        
+        .doctor-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: url('https://via.placeholder.com/150') center/cover;
+            margin-right: 20px;
+        }
+        
+        .doctor-info {
+            flex: 1;
+        }
+        
+        .doctor-name {
+            font-size: 22px;
+            margin-top: 0;
+            color: #8e44ad;
+        }
+        
+        .specialization {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .experience {
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .booking-form {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .form-title {
+            margin-top: 0;
+            color: #8e44ad;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .btn {
+            background-color: #8e44ad;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #7d3c98;
+        }
+        
+        .services-list {
+            margin-bottom: 30px;
+        }
+        
+        .service-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .service-name {
+            font-weight: bold;
+        }
+        
+        .service-price {
+            color: #8e44ad;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .clinic-info, .doctor-card {
+                flex-direction: column;
+            }
+            
+            .clinic-photo, .clinic-details, .doctor-photo {
+                width: 100%;
+            }
+            
+            .doctor-photo {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Запись на приём к косметологу</h1>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="clinic-info">
+            <div class="clinic-photo">
+ <img src="img/vl933d1h.png">
+</div>
+            <div class="clinic-details">
+                <h2>Клиника эстетической медицины "Эстетик"</h2>
+                <p><strong>Адрес:</strong> г. Ижевск, ул. Удмуртская, д. 25</p>
+                <p><strong>Телефон:</strong> +7 (495) 123-45-67</p>
+                <p><strong>Режим работы:</strong> Пн-Пт: 9:00 - 21:00, Сб-Вс: 10:00 - 18:00</p>
+                <p>Современная клиника с новейшим оборудованием и опытными специалистами.</p>
+            </div>
+        </div>
+        
+        <div class="services-list">
+            <h2>Наши услуги</h2>
+            
+            <div class="service-item">
+                <span class="service-name">Консультация косметолога</span>
+                <span class="service-price">2 000 руб.</span>
+            </div>
+            
+            <div class="service-item">
+                <span class="service-name">Чистка лица</span>
+                <span class="service-price">4 500 руб.</span>
+            </div>
+            
+            <div class="service-item">
+                <span class="service-name">Биоревитализация</span>
+                <span class="service-price">12 000 руб.</span>
+            </div>
+            
+            <div class="service-item">
+                <span class="service-name">Ботокс</span>
+                <span class="service-price">15 000 руб.</span>
+            </div>
+            
+            <div class="service-item">
+                <span class="service-name">Лазерная эпиляция</span>
+                <span class="service-price">от 3 500 руб.</span>
+            </div>
+        </div>
+        
+
+        
+        <div class="booking-form">
+            <h3 class="form-title">Форма записи на приём</h3>
+            
+            <form id="appointmentForm">
+                <div class="form-group">
+                    <label for="name">ФИО *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Телефон *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="service">Услуга *</label>
+                    <select id="service" name="service" required>
+                        <option value="">-- Выберите услугу --</option>
+                        <option value="consultation">Консультация косметолога</option>
+                        <option value="cleaning">Чистка лица</option>
+                        <option value="biorevitalization">Биоревитализация</option>
+                        <option value="botox">Ботокс</option>
+                        <option value="laser">Лазерная эпиляция</option>
+                        <option value="other">Другая услуга</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="doctor">Косметолог</label>
+                    <select id="doctor" name="doctor">
+                        <option value="any">Любой доступный специалист</option>
+                        <option value="ivanova">Иванова Анна Сергеевна</option>
+                        <option value="petrova">Петрова Елена Викторовна</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Дата приёма *</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="time">Удобное время *</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comments">Комментарий</label>
+                    <textarea id="comments" name="comments" placeholder="Опишите вашу проблему или пожелания"></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Записаться на приём</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Здесь можно добавить обработку формы (отправку на сервер)
+            alert('Ваша заявка принята! Мы свяжемся с вами для подтверждения записи.');
+            this.reset();
+            
+            // В реальном проекте здесь будет AJAX-запрос к серверу
+            // fetch('/api/appointments', {
+            //     method: 'POST',
+            //     body: JSON.stringify(Object.fromEntries(new FormData(this))),
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     }
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     alert('Запись успешно оформлена!');
+            //     this.reset();
+            // })
+            // .catch(error => {
+            //     alert('Ошибка при отправке формы');
+            // });
+        });
+        
+        // Установка минимальной даты (сегодня)
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').min = today;
+    </script>
+</body>
+</html>
